@@ -1,4 +1,4 @@
-import { PrismaBookRepository } from "@/dataAccess/prismaBookRepository.js";
+import { PrismaBookRepository } from "@/dataAccess/prismaBookRepository";
 import type { Book } from "@prisma/client";
 
 export class BookService {

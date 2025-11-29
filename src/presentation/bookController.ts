@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { BookService } from "@/businessLogic/bookService.js";
+import { BookService } from "@/businessLogic/bookService";
 
 export class BookController {
   private bookService: BookService;

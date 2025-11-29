@@ -1,4 +1,4 @@
-import { BookController } from "@/presentation/bookController.js";
+import { BookController } from "@/presentation/bookController";
 import express from "express";
 
 const app = express();
