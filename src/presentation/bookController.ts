@@ -1,12 +1,8 @@
 import type { Request, Response } from "express";
-import { BookService } from "@/businessLogic/bookService";
+import { BookServiceInterface } from "@/businessLogic/bookServiceInterface";
 
 export class BookController {
-  private bookService: BookService;
-
-  constructor() {
-    this.bookService = new BookService();
-  }
+  constructor(private readonly bookService: BookServiceInterface) {}
 
   async addBook(req: Request, res: Response): Promise<void> {
     try {

@@ -1,12 +1,9 @@
-import { PrismaBookRepository } from "@/dataAccess/prismaBookRepository";
 import type { Book } from "@prisma/client";
+import { BookRepositoryInterface } from "@/dataAccess/bookRepositoryInterface";
+import { BookServiceInterface } from "@/businessLogic/bookServiceInterface";
 
-export class BookService {
-  private bookRepository: PrismaBookRepository;
-
-  constructor() {
-    this.bookRepository = new PrismaBookRepository();
-  }
+export class BookService implements BookServiceInterface {
+  constructor(private readonly bookRepository: BookRepositoryInterface) {}
 
   async addBook(title: string): Promise<Book> {
     return await this.bookRepository.create(title);
