@@ -3,7 +3,7 @@ import { writeFile, lowercaseFirst } from "@/tools/utils";
 import {
   generateEntity,
   generateRepositoryInterface,
-} from "@/tools/templates/entityLayter";
+} from "@/tools/templates/entityLayer";
 import { input, select } from "@inquirer/prompts";
 
 async function generateEntityLayer() {
