@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@inquirer/prompts": "^8.0.2",
     "express": "^5.1.0",
     "uuid": "^13.0.0"
   },
