@@ -1,11 +1,11 @@
-import { capitalize, lowercaseFirst } from '../utils';
+import { capitalize, lowercaseFirst } from "@/tools/utils";
 
 export function generateRouter(entityName: string) {
   const content = `
 import { Router } from 'express';
 import { ${capitalize(
     entityName
-  )}Controller } from '../../../adapter/controllers/${lowercaseFirst(
+  )}Controller } from '@/adapter/controllers/${lowercaseFirst(
     entityName
   )}Controller';
 
@@ -19,5 +19,5 @@ export function ${lowercaseFirst(entityName)}Routes(${lowercaseFirst(
   return router;
 }
 `;
-  return content.trim() + '\n';
-};
+  return content.trim() + "\n";
+}

@@ -1,16 +1,22 @@
-import { capitalize, lowercaseFirst } from '../utils';
+import { capitalize, lowercaseFirst } from "@/tools/utils";
 
 export function generateController(entityName: string, useCaseName: string) {
   const content = `
 import { Request, Response } from 'express';
 import { ${capitalize(
     useCaseName
-  )}UseCaseInterface } from '../../application/usecases/${lowercaseFirst(
+  )}UseCaseInterface } from '@/application/${lowercaseFirst(
     entityName
-  )}/${lowercaseFirst(useCaseName)}UseCaseInterface';
+  )}/usecases/${lowercaseFirst(entityName)}/${lowercaseFirst(
+    useCaseName
+  )}UseCaseInterface';
 import { ${capitalize(
     useCaseName
-  )}RequestDto } from '../../application/dtos/${entityName}/${useCaseName}RequestDto'
+  )}RequestDto } from '@/application/${lowercaseFirst(
+    entityName
+  )}/dtos/${lowercaseFirst(entityName)}/${lowercaseFirst(
+    useCaseName
+  )}RequestDto'
 
 export class ${capitalize(entityName)}Controller {
   constructor(
@@ -38,7 +44,7 @@ export class ${capitalize(entityName)}Controller {
   }
 }
 `;
-  return content.trim() + '\n';
+  return content.trim() + "\n";
 }
 
 export function generatePrismaRepository(entityName: string) {
@@ -52,8 +58,8 @@ export function generatePrismaRepository(entityName: string) {
 
   const content = `
 import { PrismaClient } from '@prisma/client';
-import { ${capitalEntityName} } from '../../domain/entities/${lowercaseEntityName}';
-import { ${repositoryInterfaceClassName} } from '../../domain/repositories/${repositoryInterfaceFileName}';
+import { ${capitalEntityName} } from '@/domain/entities/${lowercaseEntityName}';
+import { ${repositoryInterfaceClassName} } from '@/domain/repositories/${repositoryInterfaceFileName}';
 
 export class ${repositoryClassName} implements ${repositoryInterfaceClassName} {
   constructor(private readonly prisma: PrismaClient) {}
@@ -85,5 +91,5 @@ export class ${repositoryClassName} implements ${repositoryInterfaceClassName} {
   }
 }
 `;
-  return content.trim() + '\n';
+  return content.trim() + "\n";
 }

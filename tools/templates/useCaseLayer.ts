@@ -1,4 +1,4 @@
-import { capitalize, lowercaseFirst } from '../utils';
+import { capitalize, lowercaseFirst } from "@/tools/utils";
 
 export function generateUseCaseInterface(
   entityName: string,
@@ -7,45 +7,57 @@ export function generateUseCaseInterface(
   const content = `
 import { ${capitalize(
     useCaseName
-  )}RequestDto } from '../../dtos/${lowercaseFirst(
+  )}RequestDto } from '@/application/${lowercaseFirst(
     entityName
-  )}/${lowercaseFirst(useCaseName)}RequestDto';
+  )}/dtos/${lowercaseFirst(entityName)}/${lowercaseFirst(
+    useCaseName
+  )}RequestDto';
 import { ${capitalize(
     useCaseName
-  )}ResponseDto } from '../../dtos/${lowercaseFirst(
+  )}ResponseDto } from '@/application/${lowercaseFirst(
     entityName
-  )}/${lowercaseFirst(useCaseName)}ResponseDto';
+  )}/dtos/${lowercaseFirst(entityName)}/${lowercaseFirst(
+    useCaseName
+  )}ResponseDto';
 
 export interface ${capitalize(useCaseName)}UseCaseInterface {
-  execute(requestDto: ${capitalize(useCaseName)}RequestDto): Promise<${capitalize(
+  execute(requestDto: ${capitalize(
     useCaseName
-  )}ResponseDto>;
+  )}RequestDto): Promise<${capitalize(useCaseName)}ResponseDto>;
 }
 `;
-  return content.trim() + '\n';
+  return content.trim() + "\n";
 }
 
 export function generateUseCase(entityName: string, useCaseName: string) {
   const content = `
 import { ${capitalize(
     entityName
-  )}RepositoryInterface } from '../../../domain/repositories/${lowercaseFirst(
+  )}RepositoryInterface } from '@/domain/repositories/${lowercaseFirst(
     entityName
   )}RepositoryInterface';
-import { ${capitalize(
+import { ${capitalize(entityName)} } from '@/domain/entities/${lowercaseFirst(
     entityName
-  )} } from '../../../domain/entities/${lowercaseFirst(entityName)}';
-import { ${capitalize(
-    useCaseName
-  )}RequestDto } from '../../dtos/${lowercaseFirst(
-    entityName
-  )}/${lowercaseFirst(useCaseName)}RequestDto';
+  )}';
 import { ${capitalize(
     useCaseName
-  )}ResponseDto } from '../../dtos/${lowercaseFirst(
+  )}RequestDto } from '@/application/${lowercaseFirst(
     entityName
-  )}/${lowercaseFirst(useCaseName)}ResponseDto';
-import { ${capitalize(useCaseName)}UseCaseInterface } from './${lowercaseFirst(
+  )}/dtos/${lowercaseFirst(entityName)}/${lowercaseFirst(
+    useCaseName
+  )}RequestDto';
+import { ${capitalize(
+    useCaseName
+  )}ResponseDto } from '@/application/${lowercaseFirst(
+    entityName
+  )}/dtos/${lowercaseFirst(entityName)}/${lowercaseFirst(
+    useCaseName
+  )}ResponseDto';
+import { ${capitalize(
+    useCaseName
+  )}UseCaseInterface } from '@/application/${lowercaseFirst(
+    entityName
+  )}/usecases/${lowercaseFirst(entityName)}/${lowercaseFirst(
     useCaseName
   )}UseCaseInterface';
 
@@ -63,7 +75,7 @@ export class ${capitalize(useCaseName)}UseCase implements ${capitalize(
   }
 }
 `;
-  return content.trim() + '\n';
+  return content.trim() + "\n";
 }
 
 export function generateRequestDto(useCaseName: string) {
@@ -72,7 +84,7 @@ export interface ${capitalize(useCaseName)}RequestDto {
   // Add properties for ${lowercaseFirst(useCaseName)} request
 }
 `;
-  return content.trim() + '\n';
+  return content.trim() + "\n";
 }
 
 export function generateResponseDto(useCaseName: string) {
@@ -81,5 +93,5 @@ export interface ${capitalize(useCaseName)}ResponseDto {
   // Add properties for ${lowercaseFirst(useCaseName)} response
 }
 `;
-  return content.trim() + '\n';
+  return content.trim() + "\n";
 }
