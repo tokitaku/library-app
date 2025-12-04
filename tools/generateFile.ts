@@ -15,6 +15,7 @@ import {
   generateController,
   generatePrismaRepository,
 } from "@/tools/templates/adapterLayer";
+import { generateRouter } from "@/tools/templates/infrastructureLayer";
 
 async function generateEntityLayer() {
   const entityName = await input({
@@ -131,6 +132,20 @@ async function generateInterfaceAdapterLayer() {
   );
 }
 
+async function generateInfrastructureLayer() {
+  const entityName = await input({
+    message: "エンティティの名前を入力してください:",
+  });
+
+  const basePath = path.join(process.cwd(), "src", "infrastructure", "web");
+
+  const routerContent = generateRouter(entityName);
+  writeFile(
+    path.join(basePath, "routers", `${lowercaseFirst(entityName)}Router.ts`),
+    routerContent
+  );
+}
+
 async function main() {
   const layers = [
     "Entity",
@@ -153,7 +168,7 @@ async function main() {
   } else if (layer === "Interface adapter") {
     await generateInterfaceAdapterLayer();
   } else if (layer === "Framework & Driver") {
-    console.log("Framework & Driver");
+    await generateInfrastructureLayer();
   }
 }
 
