@@ -4,6 +4,7 @@ export class Loan {
     private _bookId: string,
     private _userId: string,
     private _loanDate: Date,
+    private _dueDate: Date,
     private _returnDate: Date | null = null,
     private _createdAt: Date = new Date(),
     private _updatedAt: Date = new Date()
