@@ -24,7 +24,6 @@ export class PrismaLoanRepository implements LoanRepositoryInterface {
       createdLoan.bookId,
       createdLoan.userId,
       createdLoan.loanDate,
-      createdLoan.dueDate,
       createdLoan.returnDate,
       createdLoan.createdAt,
       createdLoan.updatedAt
@@ -43,7 +42,6 @@ export class PrismaLoanRepository implements LoanRepositoryInterface {
       foundLoan.bookId,
       foundLoan.userId,
       foundLoan.loanDate,
-      foundLoan.dueDate,
       foundLoan.returnDate,
       foundLoan.createdAt,
       foundLoan.updatedAt
@@ -61,7 +59,6 @@ export class PrismaLoanRepository implements LoanRepositoryInterface {
           loan.bookId,
           loan.userId,
           loan.loanDate,
-          loan.dueDate,
           loan.returnDate,
           loan.createdAt,
           loan.updatedAt

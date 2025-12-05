@@ -25,15 +25,12 @@ export class LoanBookUseCase implements LoanBookUseCaseInterface {
       throw new Error("User has reached the maximum number of active loans");
     }
     await this.bookRepository.update(book);
-    const loanDate = new Date();
-    const dueDate = new Date(loanDate);
-    dueDate.setDate(dueDate.getDate() + 14); // 2 weeks loan period
+
     const newLoan = new Loan(
       this.idGenerator.generateId(),
       requestDto.bookId,
       requestDto.userId,
-      loanDate,
-      dueDate
+      new Date()
     );
     const createdLoan = await this.loanRepository.create(newLoan);
 
