@@ -51,13 +51,14 @@ async function generateUseCaseLayer() {
   });
 
   const basePath = path.join(process.cwd(), "src", "application");
+  const normalizedEntityName = lowercaseFirst(entityName);
 
   const requestDtoContent = generateRequestDto(useCaseName);
   writeFile(
     path.join(
       basePath,
       "dtos",
-      `${lowercaseFirst(entityName)}`,
+      normalizedEntityName,
       `${lowercaseFirst(useCaseName)}RequestDto.ts`
     ),
     requestDtoContent
@@ -68,7 +69,7 @@ async function generateUseCaseLayer() {
     path.join(
       basePath,
       "dtos",
-      `${lowercaseFirst(entityName)}`,
+      normalizedEntityName,
       `${lowercaseFirst(useCaseName)}ResponseDto.ts`
     ),
     responseDtoContent
@@ -82,7 +83,7 @@ async function generateUseCaseLayer() {
     path.join(
       basePath,
       "usecases",
-      `${lowercaseFirst(entityName)}`,
+      normalizedEntityName,
       `${lowercaseFirst(useCaseName)}UseCaseInterface.ts`
     ),
     UseCaseInterfaceContent
@@ -93,7 +94,7 @@ async function generateUseCaseLayer() {
     path.join(
       basePath,
       "usecases",
-      `${lowercaseFirst(entityName)}`,
+      normalizedEntityName,
       `${lowercaseFirst(useCaseName)}UseCase.ts`
     ),
     useCaseContent
