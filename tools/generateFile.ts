@@ -50,14 +50,14 @@ async function generateUseCaseLayer() {
     message: "ユースケースの名前を入力してください:",
   });
 
-  const basePath = path.join(process.cwd(), "src", "application", entityName);
+  const basePath = path.join(process.cwd(), "src", "application");
 
   const requestDtoContent = generateRequestDto(useCaseName);
   writeFile(
     path.join(
       basePath,
       "dtos",
-      `${entityName}`,
+      `${lowercaseFirst(entityName)}`,
       `${lowercaseFirst(useCaseName)}RequestDto.ts`
     ),
     requestDtoContent
@@ -68,7 +68,7 @@ async function generateUseCaseLayer() {
     path.join(
       basePath,
       "dtos",
-      `${entityName}`,
+      `${lowercaseFirst(entityName)}`,
       `${lowercaseFirst(useCaseName)}ResponseDto.ts`
     ),
     responseDtoContent
@@ -82,7 +82,7 @@ async function generateUseCaseLayer() {
     path.join(
       basePath,
       "usecases",
-      `${entityName}`,
+      `${lowercaseFirst(entityName)}`,
       `${lowercaseFirst(useCaseName)}UseCaseInterface.ts`
     ),
     UseCaseInterfaceContent
@@ -93,7 +93,7 @@ async function generateUseCaseLayer() {
     path.join(
       basePath,
       "usecases",
-      `${entityName}`,
+      `${lowercaseFirst(entityName)}`,
       `${lowercaseFirst(useCaseName)}UseCase.ts`
     ),
     useCaseContent
