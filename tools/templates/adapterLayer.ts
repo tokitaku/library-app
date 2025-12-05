@@ -5,18 +5,14 @@ export function generateController(entityName: string, useCaseName: string) {
 import { Request, Response } from 'express';
 import { ${capitalize(
     useCaseName
-  )}UseCaseInterface } from '@/application/${lowercaseFirst(
+  )}UseCaseInterface } from '@/application/usecases/${lowercaseFirst(
     entityName
-  )}/usecases/${lowercaseFirst(entityName)}/${lowercaseFirst(
-    useCaseName
-  )}UseCaseInterface';
+  )}/${lowercaseFirst(useCaseName)}UseCaseInterface';
 import { ${capitalize(
     useCaseName
-  )}RequestDto } from '@/application/${lowercaseFirst(
+  )}RequestDto } from '@/application/dtos/${lowercaseFirst(
     entityName
-  )}/dtos/${lowercaseFirst(entityName)}/${lowercaseFirst(
-    useCaseName
-  )}RequestDto'
+  )}/${lowercaseFirst(useCaseName)}RequestDto'
 
 export class ${capitalize(entityName)}Controller {
   constructor(
