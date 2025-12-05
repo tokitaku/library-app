@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client';
-import { User } from '../../domain/entities/user';
-import { UserRepositoryInterface } from '../../domain/repositories/userRepositoryInterface';
+import { PrismaClient } from "@prisma/client";
+import { User } from "../../domain/entities/user";
+import { UserRepositoryInterface } from "../../domain/repositories/userRepositoryInterface";
 
 export class PrismaUserRepository implements UserRepositoryInterface {
   constructor(private readonly prisma: PrismaClient) {}
@@ -8,24 +8,30 @@ export class PrismaUserRepository implements UserRepositoryInterface {
   async create(user: User): Promise<User> {
     const createdUser = await this.prisma.user.create({
       data: {
-        // Add propaties
+        id: user.id,
+        email: user.email,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
       },
     });
 
     return new User(
-      // Add propaties
+      createdUser.id,
+      createdUser.email,
+      createdUser.createdAt,
+      createdUser.updatedAt
     );
   }
 
-  async findById(id: string): Promise<User | null> {
-    const foundUser = await this.prisma.user.findUnique({
-      where: { id },
-    });
+  // async findById(id: string): Promise<User | null> {
+  //   const foundUser = await this.prisma.user.findUnique({
+  //     where: { id },
+  //   });
 
-    if (!foundUser) return null;
+  //   if (!foundUser) return null;
 
-    return new User(
-      // Add propaties
-    );
-  }
+  //   return new User(
+  //     // Add propaties
+  //   );
+  // }
 }
