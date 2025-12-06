@@ -1,7 +1,12 @@
 import { Loan } from "@/domain/entities/loan";
+import { TransactionContextInterface } from "@/domain/utils/transactionContextInterface";
 
 export interface LoanRepositoryInterface {
-  create(loan: Loan): Promise<Loan>;
-  findById(id: string): Promise<Loan | null>;
-  findByUserId(userId: string): Promise<Loan[]>;
+  create(loan: Loan, ctx?: TransactionContextInterface): Promise<Loan>;
+  findById(id: string, ctx?: TransactionContextInterface): Promise<Loan | null>;
+  findByUserId(
+    userId: string,
+    ctx?: TransactionContextInterface
+  ): Promise<Loan[]>;
+  update(loan: Loan, ctx?: TransactionContextInterface): Promise<Loan>;
 }

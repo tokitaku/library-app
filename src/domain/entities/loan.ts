@@ -32,7 +32,7 @@ export class Loan {
   }
 
   returnBook() {
-    if (this._returnDate) {
+    if (this.returnDate) {
       throw new Error("Loan already returned");
     }
     this._returnDate = new Date();

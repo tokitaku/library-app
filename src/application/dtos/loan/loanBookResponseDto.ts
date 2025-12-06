@@ -3,8 +3,6 @@ export interface LoanBookResponseDto {
   bookId: string;
   userId: string;
   loanDate: Date;
-  returnDate: Date | null;
   createdAt: Date;
   updatedAt: Date;
-
 }
