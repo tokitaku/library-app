@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsx watch src/infrastructure/web/app.ts",
     "test": "jest",
-    "generate": "tsx tools/generateFile.ts"
+    "generate": "tsx tools/generateFile.ts",
+    "cli": "tsx src/infrastructure/cli/app.ts"
   },
   "keywords": [],
   "author": "",
